@@ -2,6 +2,8 @@ import os
 import sys
 import pygame as pg
 import random
+import math
+import time
 
 
 WIDTH, HEIGHT = 1600, 900
@@ -19,6 +21,19 @@ def check_bound(obj_rct:pg.Rect) -> tuple[bool, bool]:
     if obj_rct.top < 0 or HEIGHT < obj_rct.bottom:
         tate = False
     return yoko, tate
+
+def gameover():
+        img = pg.image.load("fig/8.png")
+        screen = pg.display.set_mode((WIDTH, HEIGHT))
+        pg.draw.rect(screen, (0, 0, 0), (1600, 900, 0, 0))
+        pg.Surface.set_alpha(screen, 50)
+        fonto = pg.font.Font(None, 80)
+        txt = fonto.render("Game Over", True, (255, 255, 255))
+        screen.blit(img, [600, 450])
+        screen.blit(img, [1000, 450])
+        screen.blit(txt, [675, 450])
+        pg.display.update()
+        time.sleep(5)
 
 
 def main():
@@ -43,8 +58,10 @@ def main():
             if event.type == pg.QUIT: 
                 return
         if kk_rct.colliderect(bd_rct):
-            print("Game Over")
+            clock.tick(1)
+            gameover()
             return
+            
         screen.blit(bg_img, [0, 0]) 
         bd_rct.move_ip(vx, vy)
         screen.blit(bakudan, bd_rct)
@@ -54,7 +71,10 @@ def main():
             if key_lst[k]:
                 sum_mv[0] += v[0]
                 sum_mv[1] += v[1]
-    
+        """
+        r = math.atan(sum_mv[0]/sum_mv[1])
+        kk_img = pg.transform.rotozoom(kk_img, r,0)
+        """
         kk_rct.move_ip(sum_mv)
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
