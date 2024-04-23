@@ -32,6 +32,11 @@ def check_bound(obj_rct:pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 def time_acc(tmr, vx, vy) -> tuple[bool, bool, tuple]:
+    """
+    時間に応じた加速・拡大を行う関数
+    引数：時間、ｘの加速度、ｙの加速度
+    戻り値：ｘの加速度、ｙの加速度、縦横幅のタプル
+    """
     bb_imgs=[]
     accs = [a for a in range(1, 11)]
     for r in range(1, 11):
