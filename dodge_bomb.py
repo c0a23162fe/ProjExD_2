@@ -42,6 +42,9 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
+        if kk_rct.colliderect(bd_rct):
+            print("Game Over")
+            return
         screen.blit(bg_img, [0, 0]) 
         bd_rct.move_ip(vx, vy)
         screen.blit(bakudan, bd_rct)
@@ -51,9 +54,6 @@ def main():
             if key_lst[k]:
                 sum_mv[0] += v[0]
                 sum_mv[1] += v[1]
-
-        if bd_rct[0] >= 100:
-            print("a")
     
         kk_rct.move_ip(sum_mv)
         if check_bound(kk_rct) != (True, True):
