@@ -9,7 +9,9 @@ import time
 WIDTH, HEIGHT = 1600, 900
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-def 
+def kirikae(vx, vy):
+    r = math.atan(sum_mv[0]/sum_mv[1])
+    kk_img = pg.transform.rotozoom(kk_img, r,0)
 
 def check_bound(obj_rct:pg.Rect) -> tuple[bool, bool]:
     """
@@ -91,10 +93,6 @@ def main():
             if key_lst[k]:
                 sum_mv[0] += v[0]
                 sum_mv[1] += v[1]
-        """
-        r = math.atan(sum_mv[0]/sum_mv[1])
-        kk_img = pg.transform.rotozoom(kk_img, r,0)
-        """
         kk_rct.move_ip(sum_mv)
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
