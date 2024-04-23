@@ -58,7 +58,7 @@ def gameover():
         img = pg.image.load("fig/8.png")
         screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.draw.rect(screen, (0, 0, 0), (1600, 900, 0, 0))
-        pg.Surface.set_alpha(screen, 50)
+        pg.Surface.set_alpha(50, screen)
         fonto = pg.font.Font(None, 80)
         txt = fonto.render("Game Over", True, (255, 255, 255))
         screen.blit(img, [600, 450])#こうかとん１
