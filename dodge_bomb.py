@@ -51,6 +51,10 @@ def time_acc(tmr, vx, vy) -> tuple[bool, bool, tuple]:
 
 
 def gameover():
+        """
+        ゲームオーバーのセットの関数
+        引数、戻り値 なし
+        """
         img = pg.image.load("fig/8.png")
         screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.draw.rect(screen, (0, 0, 0), (1600, 900, 0, 0))
