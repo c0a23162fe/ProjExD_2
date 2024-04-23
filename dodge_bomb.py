@@ -9,7 +9,12 @@ import time
 WIDTH, HEIGHT = 1600, 900
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-def kirikae(vx, vy):
+def tibidan(bb_rct, bd_rct, vx, vy):
+    if bb_rct[0] <800 & bd_rct[0] >800:
+        vx = -vx
+        
+
+def kirikae(sum_mv):
     r = math.atan(sum_mv[0]/sum_mv[1])
     kk_img = pg.transform.rotozoom(kk_img, r,0)
 
